@@ -39,6 +39,7 @@ function twitter() {
         for (i in tweets) {
             logActivity(tweets[i].created_at + '\n' + tweets[i].text);
         }
+        logActivity("=========================");
     });
 }
 
@@ -64,6 +65,8 @@ function spotifyThis(song) {
             // * The song that the song is from
             logActivity("The song name is: " + data.tracks.items[0].name);
 
+            logActivity("=========================");
+
         });
     } else {
         spotify.search({
@@ -85,6 +88,8 @@ function spotifyThis(song) {
 
             // * The song that the song is from
             logActivity("The song name is: " + data.tracks.items[0].name);
+
+            logActivity("=========================");
 
         });
     }
@@ -108,6 +113,7 @@ function movieThis(movie) {
             logActivity("Language of the movie: " + JSON.parse(body).Language);
             logActivity("Plot of the movie: " + JSON.parse(body).Plot);
             logActivity("Actors in the movie: " + JSON.parse(body).Actors);
+            logActivity("=========================");
         }
         else if (error) {
             return logActivity(error);
@@ -151,13 +157,12 @@ function random(){
 function logActivity(logItem) {
 
     console.log(logItem);
-    
+   
     fs.appendFile(logFile, logItem+"\n", function(err) {
 
         // If an error was experienced we say it.
         if (err) {
             console.log(err);
         }
-
     });
 }
